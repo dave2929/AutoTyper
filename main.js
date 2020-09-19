@@ -20,24 +20,24 @@ function createWindow() {
     transparent: true,
     frame: false,
     resizable: false,
-    hasShadow: false,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
     },
     focusable: false, // no icon, cannot focus
-    // opacity: 0.5,
   });
   settingsWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    titleBarStyle: "hide",
-    icon: "favicon.ico",
+    width: 350,
+    height: 550,
+    resizable: true,
+    icon: "icon/favicon.ico",
   });
-  floatingWindow.loadFile("floating_window.html");
+  settingsWindow.removeMenu();
+  floatingWindow.loadFile("src/floating_window.html");
   floatingWindow.setAlwaysOnTop(true, "floating");
-  settingsWindow.loadFile("settings_window.html");
-  // floatingWindow.webContents.openDevTools();
+  settingsWindow.loadFile("src/settings_window.html");
+  floatingWindow.webContents.openDevTools();
+  settingsWindow.webContents.openDevTools();
 
   floatingWindow.show();
   floatingWindowShow = true;
@@ -53,7 +53,7 @@ function createWindow() {
 }
 
 function createTray() {
-  tray = new Tray("favicon.ico");
+  tray = new Tray("icon/favicon.ico");
   let template = [
     {
       label: "Show",
@@ -87,11 +87,11 @@ app.on("ready", () => {
   createTray();
   globalShortcut.register("`", () => {
     if (floatingWindowShow == true) {
-      floatingWindow.hide();
       floatingWindowShow = false;
+      floatingWindow.hide();
     } else {
-      floatingWindow.show();
       floatingWindowShow = true;
+      floatingWindow.show();
     }
   });
 });
@@ -107,4 +107,9 @@ app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+// Fix tray destroy
+app.on("before-quit", () => {
+  tray.destroy();
 });
