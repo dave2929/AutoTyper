@@ -15,7 +15,7 @@ for (let i = 0; i < data.length; i++) {
 
 for (let i = 0; i < text.length; i++) {
   text[i].addEventListener("click", () => {
-    ipcRenderer.send("type", text[i].innerHTML);
+    ipcRenderer.send("type", data[i]);
   });
 }
 
@@ -28,4 +28,8 @@ ipcRenderer.on("changeText", (event, num, msg) => {
     temp = msg;
   }
   text[num].innerHTML = temp;
+});
+
+ipcRenderer.on("hotKeyType", (event, num) => {
+  ipcRenderer.send("type", data[num]);
 });

@@ -84,8 +84,9 @@ function createTray() {
 }
 
 ipcMain.on("type", (event, msg) => {
+  console.log(msg);
   robot.keyTap("enter");
-  robot.typeStringDelayed(msg, 99999);
+  robot.typeStringDelayed(msg, 50000);
   robot.keyTap("enter");
 });
 
@@ -96,7 +97,8 @@ ipcMain.on("changeText", (event, num, msg) => {
 app.on("ready", () => {
   createWindow();
   createTray();
-  globalShortcut.register("`", () => {
+  globalShortcut.register("Shift+`", () => {
+    console.log("111");
     if (floatingWindowShow == true) {
       floatingWindowShow = false;
       floatingWindow.hide();
@@ -104,6 +106,16 @@ app.on("ready", () => {
       floatingWindowShow = true;
       floatingWindow.show();
     }
+  });
+
+  for (let i = 1; i <= 10; i++) {
+    globalShortcut.register("F" + i, () => {
+      floatingWindow.webContents.send("hotKeyType", i - 1);
+    });
+  }
+  globalShortcut.register("Alt+q", () => {
+    app.isQuiting = true;
+    app.quit();
   });
 });
 
