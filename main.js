@@ -23,6 +23,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
+      worldSafeExecuteJavaScript: true,
     },
     focusable: false, // no icon, cannot focus
   });
@@ -31,12 +32,17 @@ function createWindow() {
     height: 550,
     resizable: true,
     icon: "icon/favicon.ico",
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      worldSafeExecuteJavaScript: true,
+    },
   });
   settingsWindow.removeMenu();
   floatingWindow.loadFile("src/floating_window.html");
   floatingWindow.setAlwaysOnTop(true, "floating");
   settingsWindow.loadFile("src/settings_window.html");
-  floatingWindow.webContents.openDevTools();
+  // floatingWindow.webContents.openDevTools();
   settingsWindow.webContents.openDevTools();
 
   floatingWindow.show();
@@ -82,6 +88,11 @@ ipcMain.on("type", (event, msg) => {
   robot.typeStringDelayed(msg, 99999);
   robot.keyTap("enter");
 });
+
+ipcMain.on("changeText", (event, num, msg) => {
+  floatingWindow.webContents.send("changeText", num, msg);
+});
+
 app.on("ready", () => {
   createWindow();
   createTray();

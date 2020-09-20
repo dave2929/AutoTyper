@@ -11,7 +11,7 @@ button {
   margin: 5px;
   padding: 0;
   border: 0;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 200px;
   height: 30px;
   -webkit-app-region: no-drag;
@@ -34,6 +34,24 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   margin: auto;
-  padding: 22.5px 0px;
   text-align: center;
+}
+input {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #52307c;
+
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+.row {
+  margin: 10px;
+}
+.settingsWindow {
+  background-color: #52307c;
+}
+
+input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
