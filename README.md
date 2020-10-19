@@ -25,7 +25,7 @@ You can use hotkeys **F1-F10** to type input texts.
 You can drag around both the setting window and the floating window. However, their positions will reset after closing the application.
 
 ## Installation
-Download package from **Releases** and install.
+Download the latest .exe file from **Releases** and install.
 
 ## Building
 Quick start  
