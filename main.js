@@ -43,7 +43,7 @@ function createWindow() {
   floatingWindow.setAlwaysOnTop(true, "floating");
   settingsWindow.loadFile("src/settings_window.html");
   // floatingWindow.webContents.openDevTools();
-  settingsWindow.webContents.openDevTools();
+  // settingsWindow.webContents.openDevTools();
 
   floatingWindow.show();
   floatingWindowShow = true;
@@ -84,7 +84,7 @@ function createTray() {
 }
 
 ipcMain.on("type", (event, msg) => {
-  console.log(msg);
+  // console.log(msg);
   robot.keyTap("enter");
   robot.typeStringDelayed(msg, 50000);
   robot.keyTap("enter");
