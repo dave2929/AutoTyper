@@ -6,14 +6,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "rebuild": "npm rebuild --runtime=electron --target=10.1.2 --disturl=https://atom.io/download/atom-shell --abi=64"
+    "rebuild": "npm rebuild --runtime=electron --target=10.1.2 --disturl=https://atom.io/download/atom-shell --abi=64",
+    "dist": "electron-builder"
   },
   "author": "David He",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^10.1.2"
+    "electron": "^10.1.2",
+    "electron-builder": "^22.9.1"
   },
   "dependencies": {
     "robotjs": "github:octalmage/robotjs"
+  },
+  "build": {
+    "appId": "com.david.app",
+    "productName": "AutoTyper",
+    "target": "NSIS",
+    "directories": {
+      "output": "build"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    }
   }
 }
