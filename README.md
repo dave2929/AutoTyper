@@ -5,11 +5,11 @@ With some small tweaks, AutoTyper can also be used in any application. See FAQ.
 ## Examples
 
 Autotype demonstration:
-![demo3](https://github.com/dave2929/AutoTyper/demo/demo3.gif)
+![demo3](https://github.com/dave2929/AutoTyper/blob/master/demo/demo3.gif)
 You can also use it in games:
-![demo1](https://github.com/dave2929/AutoTyper/demo/demo1.gif)
+![demo1](https://github.com/dave2929/AutoTyper/blob/master/demo/demo1.gif)
 Or like this(just for fun, not recommended):
-![demo2](https://github.com/dave2929/AutoTyper/demo/demo2.gif)
+![demo2](https://github.com/dave2929/AutoTyper/blob/master/demo/demo2.gif)
 
 ## Quick guide
 
